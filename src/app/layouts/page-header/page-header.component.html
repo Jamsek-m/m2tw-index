@@ -1,5 +1,14 @@
 <header class="flex justify-center py-4">
-    <div class="w-4/5">
+    <div class="w-4/5 flex items-center">
         <h1 class="text-3xl font-bold">M2TW</h1>
+
+        <div class="ms-12">
+            <a [routerLink]="['/traits']"
+               class="me-4"
+               [ngClass]="{'underline': currentRoute === 'traits'}">Traits</a>
+            <a [routerLink]="['/city-growth']"
+               class="me-4"
+               [ngClass]="{'underline': currentRoute === 'city-growth'}">City growth</a>
+        </div>
     </div>
 </header>

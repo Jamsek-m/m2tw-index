@@ -1,0 +1,46 @@
+<app-page-layout>
+
+    <h2 class="text-2xl font-semibold mb-6">City growth</h2>
+
+    <div class="grid grid-cols-2 gap-3">
+        <div [formGroup]="form">
+            <div>
+                <label class="block">Settlement type</label>
+                <span class="me-2">
+                <input class="me-1" type="radio" formControlName="type" value="city"/>
+                <label>City</label>
+            </span>
+                <span>
+                <input class="me-1" type="radio" formControlName="type" value="castle"/>
+                <label>Castle</label>
+            </span>
+            </div>
+            <div class="mt-2">
+                <label class="block">Current population</label>
+                <input class="text-black block" type="number" formControlName="population">
+            </div>
+
+            <div class="mt-2">
+                <label class="block">Growth</label>
+                <input class="text-black block" type="number" step="0.005" formControlName="growth">
+            </div>
+        </div>
+        <div>
+            @if((nextLevel$ | async); as nextLevel) {
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Next growth</h3>
+
+                    <div>
+                        <strong class="me-1">Next level:</strong>
+                        <span>{{nextLevel[0].name}} ({{nextLevel[0].value}})</span>
+                    </div>
+                    <div>
+                        <strong class="me-1">Turns to next level:</strong>
+                        <span>{{nextLevel[1]}}</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</app-page-layout>
