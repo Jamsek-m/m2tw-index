@@ -1,0 +1,10 @@
+@layer components {
+    .table {
+        border-collapse: collapse;
+        width: theme("width.full");
+
+        th, td {
+            padding: theme("padding.2")
+        }
+    }
+}

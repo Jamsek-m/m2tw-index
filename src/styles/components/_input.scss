@@ -1,0 +1,29 @@
+
+@layer components {
+
+    .input-group {
+        display: flex;
+        align-items: center;
+        border: 1px solid theme("colors.gray.600");
+        border-radius: theme("borderRadius.DEFAULT");
+        background: theme("colors.white");
+
+        input[type=text] {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            padding: theme("padding.2") theme("padding.4");
+            box-sizing: border-box;
+        }
+
+        .icon-appendix {
+            padding: theme("padding.1");
+            min-width: 50px;
+            text-align: center;
+
+            * {
+                color: theme("colors.black");
+            }
+        }
+    }
+}

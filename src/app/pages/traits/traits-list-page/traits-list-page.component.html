@@ -1,0 +1,64 @@
+<app-page-layout>
+
+    <h2 class="text-2xl font-semibold mb-6">Traits</h2>
+
+    @if ((selectedTrait$ | async); as selectedTrait) {
+        <app-selected-trait
+            [trait]="selectedTrait"
+            (whenAntitraitSelected)="selectTrait($event)"
+            (whenClearedTrait)="clearTrait()"/>
+    }
+
+    <div class="mt-6">
+        @if ((effects$ | async); as effects) {
+            <app-autocomplete
+                #effectInput
+                placeholder="Search effects ..."
+                [source]="effects"
+                (whenSelected)="selectedEffect($event)"/>
+        }
+
+        <div>
+            <span class="me-2">
+                <input name="effect_direction" type="radio" value="POSITIVE" checked
+                    (change)="setDirection('POSITIVE')"/>
+                Positive
+            </span>
+            <span>
+                <input name="effect_direction" type="radio" value="NEGATIVE"
+                       (change)="setDirection('NEGATIVE')"/>
+                Negative
+            </span>
+        </div>
+    </div>
+
+    <table class="table mt-6">
+        <thead>
+            <tr>
+                <th class="text-left">Name</th>
+                <th class="text-left">Max level effect</th>
+                <th class="text-left"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if ((traits$ | async); as traits) {
+                @for (traitName of Object.keys(traits); track traitName) {
+                    <tr>
+                        @if (traits[traitName]; as trait) {
+                            <td class="text-left">
+                                <span class="cursor-pointer underline" (click)="selectTrait(trait.name)">
+                                    {{ trait.name }}
+                                </span>
+                            </td>
+                            <td class="text-left">
+                                {{trait | maxEffect}}
+                            </td>
+                            <td class="text-left"></td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</app-page-layout>

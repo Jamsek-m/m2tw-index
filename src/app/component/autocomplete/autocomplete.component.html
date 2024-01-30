@@ -1,0 +1,22 @@
+<div class="relative">
+    <div class="input-group">
+        <input type="text"
+               #queryInput
+               (focus)="onInputFocus()"
+               (input)="onQueryInput($any($event.target).value)"
+               [placeholder]="placeholder"/>
+
+        <i class="icon-appendix cursor-pointer" (click)="onClear()">
+            <fa-icon [icon]="trashIcon" class="text-black"/>
+        </i>
+    </div>
+    @if (visibleResults && (results$ | async); as results) {
+        <ul [ngClass]="{'hidden': results.length === 0}">
+            @for (result of results; track result.value) {
+                <li (click)="onItemSelect(result)">
+                    {{ result.label }}
+                </li>
+            }
+        </ul>
+    }
+</div>

@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --bg-color: #000000;
+    --text-color: #FFFFFF;
+    --default-font: 'Inter', sans-serif;
+}
+
+* {
+    font-family: var(--default-font);
+    color: var(--text-color);
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+@import "./styles/components/table";
+@import "./styles/components/input";

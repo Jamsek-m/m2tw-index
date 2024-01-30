@@ -1,0 +1,32 @@
+input {
+    width: theme("width.full");
+    padding: theme("padding.1") theme("padding.2");
+    box-sizing: border-box;
+    border-radius: theme("borderRadius.DEFAULT");
+    color: theme("colors.black");
+    border: none;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    width: theme("width.full");
+    border: 1px solid theme("colors.gray.100");
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: theme("colors.gray.100");
+    border-radius: theme("borderRadius.DEFAULT");
+
+    li {
+        padding: theme("padding.2") theme("padding.4");
+        cursor: pointer;
+        color: theme("colors.black");
+
+        &:hover {
+            background-color: theme("colors.gray.300");
+            color: theme("colors.black");
+        }
+    }
+}
