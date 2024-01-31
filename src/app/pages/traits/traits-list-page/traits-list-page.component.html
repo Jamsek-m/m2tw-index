@@ -21,7 +21,7 @@
         <div>
             <span class="me-2">
                 <input name="effect_direction" type="radio" value="POSITIVE" checked
-                    (change)="setDirection('POSITIVE')"/>
+                       (change)="setDirection('POSITIVE')"/>
                 Positive
             </span>
             <span>
@@ -32,33 +32,37 @@
         </div>
     </div>
 
-    <table class="table mt-6">
-        <thead>
-            <tr>
-                <th class="text-left">Name</th>
-                <th class="text-left">Max level effect</th>
-                <th class="text-left"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @if ((traits$ | async); as traits) {
-                @for (traitName of Object.keys(traits); track traitName) {
-                    <tr>
-                        @if (traits[traitName]; as trait) {
-                            <td class="text-left">
+    <div class="overflow-x-auto">
+        <table class="table mt-6">
+            <thead>
+                <tr>
+                    <th class="text-left">Name</th>
+                    <th class="text-center">Max level</th>
+                    <th class="text-left">Max level effect</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if ((traits$ | async); as traits) {
+                    @for (traitName of Object.keys(traits); track traitName) {
+                        <tr>
+                            @if (traits[traitName]; as trait) {
+                                <td class="text-left">
                                 <span class="cursor-pointer underline" (click)="selectTrait(trait.name)">
                                     {{ trait.name }}
                                 </span>
-                            </td>
-                            <td class="text-left">
-                                {{trait | maxEffect}}
-                            </td>
-                            <td class="text-left"></td>
-                        }
-                    </tr>
+                                </td>
+                                <td class="text-center">
+                                    {{ trait.levels | maxLevel }}
+                                </td>
+                                <td class="text-left">
+                                    {{ trait | maxEffect }}
+                                </td>
+                            }
+                        </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 
 </app-page-layout>

@@ -11,6 +11,7 @@ import { SelectedTraitComponent } from "./components/selected-trait/selected-tra
 import { AutocompleteComponent } from "../../../component/autocomplete/autocomplete.component";
 import { AutocompleteRow } from "../../../component/autocomplete/types";
 import { MaxEffectPipe } from "../../../pipes/max-effect.pipe";
+import { MaxLevelPipe } from "../../../pipes/max-level.pipe";
 
 
 @Component({
@@ -24,6 +25,7 @@ import { MaxEffectPipe } from "../../../pipes/max-effect.pipe";
         JsonPipe,
         SelectedTraitComponent,
         AutocompleteComponent,
+        MaxLevelPipe,
     ],
     templateUrl: './traits-list-page.component.html',
     styleUrl: './traits-list-page.component.scss'
@@ -114,10 +116,6 @@ export class TraitsListPageComponent implements OnInit {
 
     public selectedEffect(effect: AutocompleteRow | undefined) {
         this.setQueryParam(this.EFFECT_QUERY_PARAM, effect?.value);
-    }
-
-    public clearEffect() {
-        this.setQueryParam(this.EFFECT_QUERY_PARAM, undefined);
     }
 
     public setDirection(direction: "POSITIVE" | "NEGATIVE") {
